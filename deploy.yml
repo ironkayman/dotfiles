@@ -62,11 +62,11 @@ tasks:
 
   packages:remove:
     cmds:
-      - apt remove {{.PKGS_REMOVE}}
+      - sudo apt remove {{.PKGS_REMOVE}}
       - rm -rf ~/.firefox
   packages:install:tools:base:
     cmds:
-      - apt install {{.PKGS_TOOLS_BASE}}
+      - sudo apt install {{.PKGS_TOOLS_BASE}}
   packages:install:tools:shell:
     deps:
       - packages:install:tools:shell:zinit
@@ -99,8 +99,8 @@ tasks:
       - ~/.cargo/bin/cargo install --locked {{.PKGS_CARGO_LOCKED}}
 
   packages:install:virtualization:
-    cmd: apt install {{.PKGS_VT}}
+    cmd: sudo apt install {{.PKGS_VT}}
     interactive: true
   packages:install:misc:
-    cmd: apt install {{.PKGS_MISC}}
+    cmd: sudo apt install {{.PKGS_MISC}}
     interactive: true
