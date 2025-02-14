@@ -71,9 +71,6 @@ setopt appendhistory
 # added: " '
 export WORDCHARS="*?.[]~&;!#$%^{}<>'\""
 
-bindkey "^[[1;5C" forward-word
-bindkey "^[[1;5D" backward-word
-
 # https://unix.stackexchange.com/questions/5293/how-do-i-jump-to-the-next-or-previous-word-with-ctrl-arrow-keys-in-a-console
 # Enable Ctrl+arrow key bindings for word jumping
 bindkey '^[[1;5C' forward-word     # Ctrl+right arrow
@@ -109,6 +106,7 @@ PATH="/usr/bin/flutter/bin/:$PATH"
 # ----------
 
 alias tx='tar --extract --file'
+alias wget-any='wget --tries=5 --retry-connrefused --timeout=60 --waitretry=60 --read-timeout=360 --max-redirect=10 --protocol-directories'
 
 # taskfile
 # -------------------
@@ -128,7 +126,7 @@ alias g='git'
 alias ggraph='git log --oneline --all --graph --decorate'
 # git logs cool-looking tree of every commit with metadata (author and stuff)
 alias ggraph-w-authors='git log --all --graph --decorate'
-alias gfetch='git fetch --all --tags'
+alias gfetch='git fetch --all --tags --prune-tags'
 alias greset='git reset --hard'
 alias gclean='git clean -fdx'
 alias gsd='git diff --submodule=log'
@@ -161,8 +159,12 @@ export LESS=-R
 # ~/.cache/sccache size
 export SCCACHE_CACHE_SIZE=60G
 
+# ollama
+export OLLAMA_MODELS="$HOME/.var/ollama/models"
+
 # Wasmer
 export WASMER_DIR="$HOME/.wasmer"
 [ -s "$WASMER_DIR/wasmer.sh" ] && source "$WASMER_DIR/wasmer.sh"
 
 # eval "$(zellij setup --generate-auto-start zsh)"
+
